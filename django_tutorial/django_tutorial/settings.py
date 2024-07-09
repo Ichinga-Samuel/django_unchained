@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Local apps
     'band.apps.BandConfig',
+    'paper.apps.PaperConfig'
 ]
 
 MIDDLEWARE = [

@@ -93,16 +93,42 @@ class Pizza(models.Model):
     name = models.CharField(max_length=30)
     toppings = models.ManyToManyField(Topping)
 ```
+
 You can also create recursive relationships (an object with a many-to-many relationship to itself) and relationships to
 models not yet defined. It doesn’ t matter which model has the ManyToManyField, but you should only put it in one of the models –
 not both.
+
 #### Extra fields on many-to-many relationships
+
 An intermediate model can be created for holding information about the relationship.
 This model is associated with the ManyToManyField using the `through` argument.
 An example is shown in [example](../../django_tutorial/band/models.py). Calling **clear()** on a many-to-many relationship manger
 can be used to remove all the relationships and delete the intermediate model instances.
 
 ### One-to-one relationships
+
 To define a one-to-one relationship, use `OneToOneField`. This works exactly like `ForeignKey`,
 but it creates a one-to-one relationship. A one-to-one relationship is basically a way of extending a model with
 another model using inheritance.
+
+### Field Name Restrictions
+
+* A field name cannot be a Python reserved word, because that would result in a Python syntax error.
+
+* A field name cannot contain more than one underscore in a row, due to the way Django’s query lookup
+  syntax works it can not also end with an underscore.
+
+> These limitations can be worked around, though, because your field name doesn’t necessarily have to match your database column name. See the db_column option.
+
+### Meta Options
+
+Give your model metadata by using an inner class Meta
+
+```python
+class Ox(models.Model):
+    horn_length = models.IntegerField()
+    
+    class Meta:
+        ordering = ["horn_length"]  # specify odering 
+        verbose_name_plural = "oxen" # 
+```
