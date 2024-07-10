@@ -1,12 +1,14 @@
 # Views
+
 A view is a callable which takes a request and returns a response. This can be more than just a function,
-and Django provides an example of some classes which can be used as views. These allow you to structure
-your views and reuse code by harnessing inheritance and mixins. 
+and Django provides an example of some classes which can be used as views. These allow you to structure your views and reuse code by harnessing inheritance and mixins.
 
 ## Class Based Views
+
 Class based views are a way to reuse code and structure views. They are more powerful than function based views.
 Class based views use the `as_view()` method to return a view function for handling requests. The `as_view()` method
 returns a callable that takes a request and returns a response.
+
 ```python
 from django.views import View # The base class for all views
 
@@ -15,8 +17,14 @@ class MyView(View):
         return HttpResponse('Hello, World!')
 ```
 
+## View
+
+The base view class that all views inherit from. It does setup and initializes *request, args, and kwargs*
+
 ## Form Views
+
 Class based views can be used to handle forms as shown in the example below.
+
 ```python
 from django.views import View
 from djang.http import HttpResponseRedirect
@@ -40,8 +48,10 @@ class MyFormView(View):
 ```
 
 ## Decorating a Class View
+
 A class based view can be decorated using the `method_decorator` decorator. This is useful when you want to apply
 decorators to all instances of a class based view.
+
 ```python
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required

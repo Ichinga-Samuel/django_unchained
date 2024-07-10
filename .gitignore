@@ -2,3 +2,4 @@ venv/
 .idea/
 staticfiles/
 __pycache__/
+.*pyc
