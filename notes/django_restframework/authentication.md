@@ -84,6 +84,16 @@ urlpatterns = [
 ]
 ```
 
+### Endpoints
+
+Endpoints provided by `dj-rest-auth` are as follows:
+
+* /registration
+* /rest-auth/login
+* /rest-auth/logout
+* /rest-auth/password/reset
+* /rest-auth/password/reset/confirm
+
 ## User Registration
 
 Use `django-allauth` to handle user registration.
@@ -112,6 +122,10 @@ TEMPLATES = [
             ]
         }
     }
+]
+MIDDLEWARE = [
+    ...,
+    "allauth.account.middleware.AccountMiddleware",
 ]
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 SITE_ID = 1
