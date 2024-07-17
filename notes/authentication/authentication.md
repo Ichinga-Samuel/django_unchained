@@ -32,5 +32,6 @@ Configure an email backend in settings.py to send emails.
 # email backend for development
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ```
+
 You can also have a custom email template for the password reset email. Create a `password_reset_email.html` file
 in the registration folder in the templates folder. Add a text file for the email body and a text file for the email subject.
