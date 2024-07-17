@@ -20,6 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # init environment variables
 env = Env()
 env.read_env(path=BASE_DIR / '.env.development')
+
+# local, remote, production
 ENV = env('ENV')
 
 # Quick-start development settings - unsuitable for production
