@@ -1,5 +1,12 @@
 # Authentication
-Django helps in handling authentication via the `django.contrib.auth` module
+
+Django authentication provides both authentication and authorization together and is generally referred to
+as the authentication system, as these features are somewhat coupled.
+Django helps in handling authentication via the `django.contrib.auth` module.
+
+## TOC
+
+* [User Objects](./user.md)
 
 ### Templates
 Account Handling templates should be ideally be in the **registration** folder in the toplevel templates folder.

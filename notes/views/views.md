@@ -69,6 +69,7 @@ class MyView(View):
 ```
 
 ### Important Attributes of Class Based Views
+
 - `request` : The request object
 - `args` : The positional arguments passed to the view via the URL pattern
 - `kwargs` : The keyword arguments passed to the view via the URL pattern
