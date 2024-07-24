@@ -157,8 +157,56 @@ class AccessMixin:
         """Depending on the value of raise_exception, the method either raises a PermissionDenied exception or redirects the user to the login_url,"""
 ```
 
-### Authentication View
+### Authentication Views
 
 Django provides several views that you can use for handling login, logout, and password management. These
-make use of the stock auth forms but you can pass in your own forms as well. Authentication views expect there templates at `templates/registration`. Urls mapping to this views are at `django.contrib.auth.urls`
+make use of the stock auth forms but you can pass in your own forms as well. Authentication views expect there templates at `templates/registration`. Urls mapping to this views are at `django.contrib.auth.urls`.
+They can be introduced as shown below.
 
+```python
+# urls.py
+from django.urls import path
+from django.contrib.auth.views import LoginView
+
+urlpatterns = [
+    path("accounts/", "django.contrib.auth.urls"),
+    path()
+]
+# by importing the view directly you can change the url
+urlpatterns = [
+    path("signin/", LoginView.as_view())
+]
+
+```
+
+#### Common Methods and Attributes for All Authentication Views
+
+- `template_name`: By default all templates for authentication views are in the `template/registration` folder.
+- `extra_context`: A dictionary of extra context for the template
+
+#### LoginView
+
+This view handles login. The url is at *login/*.
+
+#### Some Methods and Attributes
+
+- `template_name`: the default is *registration/login.html.*
+- `next_page`: defaults to *settings.LOGIN_REDIRECT_URL.*
+- `redirect_field_name`: The GET field containing the URL to redirect to after login. Defaults to next.
+- `authentication_form`: A callable (typically a form class) to use for authentication. Defaults to AuthenticationForm.
+
+##### Context Variables
+
+- `form`: A Form object representing the AuthenticationForm.
+- `next`: The URL to redirect to after successful login. This may contain a query string, too.
+- `site`: The current Site, according to the SITE_ID setting. If you don’t have the site framework installed, this will be set to an instance of  RequestSite, which derives the site name and domain from the current HttpRequest.
+- `site_name`: An alias for site.name
+
+#### Logout View
+
+Logs a user out on POST requests. URL name: *logout*, template_name: *registration/logged_out.html.*
+Context Variables include `title` `site` and `site_name`. *next_page* defaults to *settings.LOGOUT_REDIRECT_URL*
+
+#### PasswordChangeView
+
+Allows a user to change their password.
