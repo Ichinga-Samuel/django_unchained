@@ -1,8 +1,8 @@
 # CORS
 
-Cross-Origin Resource Sharing (CORS)59 refers to the fact that whenever a client interacts with
-an API hosted on a different domain (mysite.com vs yoursite.com) or port (localhost:3000 vs
-localhost:8000) there are potential security issues.
+Cross-Origin Resource Sharing (CORS) refers to the fact that whenever a client interacts with
+an API hosted on a different domain (mysite.com vs yoursite.com) or port (localhost:3000 vs localhost:8000) 
+there are potential security issues.
 
 ## Django CORS Headers
 

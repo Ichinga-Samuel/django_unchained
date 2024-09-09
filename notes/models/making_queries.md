@@ -42,7 +42,9 @@ filters together all day long, and Django won’t actually run the query until t
 ### Retrieving a single object with get()
 
 Similarly, Django will complain if more than one item matches the get() query. In this case, it will raise
-*MultipleObjectsReturned*, which again is an attribute of the model class itself. Generally, slicing a QuerySet returns a new QuerySet –it doesn’t evaluate the query. An exception is if you use the “step” parameter of Python slice syntax. For example, this would actually execute the query in order to return a list of every second object of the first 10.
+*MultipleObjectsReturned*, which again is an attribute of the model class itself. Generally, slicing a QuerySet
+returns a new QuerySet –it doesn’t evaluate the query. An exception is if you use the “step” parameter of Python slice
+syntax.
 
 ### QuerySets
 

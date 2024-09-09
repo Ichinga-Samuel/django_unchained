@@ -1,3 +1,10 @@
+<!-- toc -->
+- [Databases](#databases)
+  - [Persistent Notes](#persistent-notes)
+  - [Connection Management](#connection-management)
+- [Postgres](postgres.md)
+<!-- /toc -->
+
 # Databases
 
 Django officially supports the following databases.
@@ -7,6 +14,7 @@ Django officially supports the following databases.
 - MySQL
 - Oracle
 - SQLite
+
 Django assumes that all databases use UTF-8 encoding.
 
 ## Persistent Notes

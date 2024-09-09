@@ -5,8 +5,6 @@ psycopg 3.1.8+ is recommended.
 
 ## Connection Settings
 
-### Default Settings
-
 ```python
 DATABASES = {
     "default": {
@@ -21,8 +19,8 @@ DATABASES = {
 }
 ```
 
-## Optimizing Postgres
-
 ### Manually-specifying values of auto-incrementing primary keys
 
-Manually assigning a value to an auto-incrementing field doesn’t update the field’s sequence, which might later cause a conflict. If you need to specify such values, reset the sequence afterward to avoid reusing a value that’s already in the table. The `sqlsequencereset` management command generates the SQL statements to do that.
+Manually assigning a value to an auto-incrementing field doesn’t update the field’s sequence,
+which might later cause a conflict. If you need to specify such values, reset the sequence afterward to avoid reusing
+a value that’s already in the table. The `sqlsequencereset` management command generates the SQL statements to do that.

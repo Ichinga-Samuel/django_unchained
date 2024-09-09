@@ -1,48 +1,43 @@
 # Generic Views
-Django’s generic views really shine when it comes to presenting views
-of your database content. Because it’ s such a common task, Django comes with a handful of built-in generic
-views to help generate list and detail views of objects
 
-## Common Generic Views
-### ListView
+Django’s generic views really shine when it comes to presenting views
+of your database content. Because it’s such a common task, Django comes with a handful of built-in generic views
+to help generate list and detail views of objects among other things.
+
+## ListView
+
 The ListView class is used to display a list of objects. It is a combination of `MultipleObjectMixin` and
-`MultipleObjectTemplateResponseMixin`.
+`MultipleObjectTemplateResponseMixin`. A list view is used to display a list of objects.
+
 ```python
 from django.views.generic import ListView
+
 from .models import MyModel
 
+
 class MyModelListView(ListView):
-    template_name_suffix = "_list" # The template to use
+    model = MyModel
 ```
 
-### DetailView
-The DetailView class is used to display a detail view of an object. It is a combination of `SingleObjectMixin` and 
+## DetailView
+
+The DetailView class is used to display a detail view of an object. It is a combination of `SingleObjectMixin` and
 `SingleObjectTemplateResponseMixin`.
 
-## Important Methods
-
-### get_context_data
-The `get_context_data` method is used to add extra context to the template. It returns a dictionary of context data.
-Always call the super method before or after adding extra context as the need may be. It is provided by the `ContextMixin` class.
 ```python
-def get_context_data(self, **kwargs):
-    context = super().get_context_data(**kwargs)
-    context['extra_context'] = 'Extra Context'
-    return context
+from django.views.generic import DetailView
+
+from .models import MyModel
+
+
+class MyModelDetailView(DetailView):
+    model = MyModel
 ```
 
-### get_queryset
-The `get_queryset` method is used to dynamically obtain the queryset. It returns the queryset to use for the view.
-It is provided by both the `MultipleObjectMixin` and `SingleObjectMixin` classes.
-```python
-def get_queryset(self):
-    return MyModel.objects.filter(active=True)
-```
+## Edit Views
+Generic Edit views will automatically create a `ModelForm`, so long as they can work out which model class to use.
+The `fields` attribute is used to specify the fields to include in the form.
+The `CreateView`, `UpdateView`, and `DeleteView` classes rely on the `ModelFormMixin` class to create the form class.
+The `ModelFormMixin` is a combination of `SingleObjectMixin` and `FormMixin`.
 
-### get_object
-The `get_object` method is used to dynamically obtain the object to display. It returns the object to display and 
-allows for custom actions to be performed. It is provided by the `SingleObjectMixin` class.
 ```python
-def get_object(self):
-    return MyModel.objects.get(pk=self.kwargs['pk'])
-```

@@ -4,6 +4,8 @@
 - [User Authentication](./user.md)
 - [Authenticating Web Request](./web_request_authentication.md)
 
+<!-- /TOC -->
+
 # Authentication
 Django authentication provides both authentication and authorization together and is generally referred to
 as the authentication system, as these features are somewhat coupled.

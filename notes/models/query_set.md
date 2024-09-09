@@ -8,6 +8,8 @@ Async version of `get_or_create` is `aget_or_create`.
 ```python
 from myapp.models import MyModel
 
+# kwargs are the lookup parameters for the object
+# defaults are the parameters to use when creating a new object
 obj, done = MyModel.get_or_create(defaults=None, **kwargs)
 ```
 
@@ -20,5 +22,8 @@ Async version of `update_or_create` is `aupdate_or_create`.
 ```python
 from myapp.models import MyModel
 
+# kwargs are the lookup parameters for the object
+# create_defaults are the parameters to use when creating a new object
+# defaults are the parameters to use when updating an existing object
 obj, done = MyModel.update_or_create(defaults=None, create_defaults={}, **kwargs)
 ```
